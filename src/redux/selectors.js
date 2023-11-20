@@ -1,5 +1,3 @@
-import { createSelector } from "@reduxjs/toolkit";
-
 export const selectAllCars = (state) => state.cars.items;
 
 export const selectFilter = (state) => state.filter.conditions;

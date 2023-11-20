@@ -9,7 +9,7 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   
-    <BrowserRouter>
+    <BrowserRouter basename="/RentCar">
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <App />
