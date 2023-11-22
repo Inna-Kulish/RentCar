@@ -4,7 +4,6 @@ import { getCars } from "./operations";
 const initialState = {
   items: [],
   favorite: [],
-  page: 1,
   isLoading: false,
   error: null,
 };
@@ -20,7 +19,10 @@ const handleRejected = (state, action) => {
 const carSlice = createSlice({
   name: 'cars',
   initialState,
-reducers: {
+  reducers: {
+    clearCars: (state) => {
+      state.items = [];
+  },
   setPage: (state) => {
       state.page = state.page + 1;
   },
@@ -40,5 +42,5 @@ reducers: {
 
 export const carsReducer = carSlice.reducer;
 export const {
-  setPage, setFavorite, deleteFavorite
+  clearCars, setPage, setFavorite, deleteFavorite
 } = carSlice.actions;

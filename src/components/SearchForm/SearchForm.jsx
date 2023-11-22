@@ -6,7 +6,7 @@ import { getPriceNumber } from "../../services/getPriceNumber";
 import { Form, Label, Input, InputRight, Button, StyledSelect, InputWrap, InputSpan, InputBox } from "./SearchForm.styled";
 import { useState } from "react";
 
-export default function SearchForm() {
+export default function SearchForm({clearPage}) {
   const [inputFrom, setInputFrom] = useState('');
   const [inputTo, setInputTo] = useState('');
   const dispatch = useDispatch();
@@ -42,8 +42,7 @@ export default function SearchForm() {
     
     
     if (!valueBrand && !valuePrice && !valueMileFrom && !valueMileTo) {
-     
-      return;
+      clearPage();
     }
     
     dispatch(
