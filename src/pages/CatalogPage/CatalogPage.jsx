@@ -24,6 +24,7 @@ export default function CatalogPage() {
   const clearPage = () => {
     dispatch(clearCars());
     setPage(1);
+    dispatch(getCars(page));
   };
 
   useEffect(() => {
