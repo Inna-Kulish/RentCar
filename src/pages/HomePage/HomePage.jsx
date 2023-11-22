@@ -8,12 +8,11 @@ export default function HomePage() {
                     <Title>Car rental in Ukraine</Title>
                 </Wrapper>
                 <List>
-                    <Item>Good car</Item>
+                    <Item></Item>
                     <Item></Item>
                     <Item></Item>
                 </List>
             </section>
-
             </>
     )
 }

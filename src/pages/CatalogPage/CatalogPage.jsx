@@ -6,7 +6,7 @@ import { setPage } from "../../redux/cars/slice";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import CarsList from "../../components/CarsList/CarsList";
 import LoadMore from "../../components/LoadMore/LoadMore";
-import { selectPage, selectAllCars, selectFilteredCars } from "../../redux/selectors";
+import { selectPage, selectCars, selectFilteredCars } from "../../redux/selectors";
 import { CatalogBox } from "./CatalogPage.styled";
 
 export default function CatalogPage() {
@@ -14,10 +14,10 @@ export default function CatalogPage() {
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
   const visibleCars = useSelector(selectFilteredCars);
-  const allCars = useSelector(selectAllCars);
+  const allCars = useSelector(selectCars);
 
 const handleLoadMore = () => {
-    dispatch(setPage());
+    dispatch(setPage(page));
   };
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const handleLoadMore = () => {
   return (
     <CatalogBox>
       <SearchForm />
-      {visibleCars.length ? <CarsList cars={visibleCars} /> : <CarsList cars={allCars} />}
+      {visibleCars ? <CarsList cars={visibleCars} /> : <CarsList cars={allCars} />}
       <LoadMore onClick={handleLoadMore}/>
     </CatalogBox>
   );

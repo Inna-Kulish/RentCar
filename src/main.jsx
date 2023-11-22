@@ -8,13 +8,13 @@ import App from "./App.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-   <React.StrictMode>
+   
     <BrowserRouter basename="/RentCar">
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <App />
         </PersistGate>
       </Provider>
-    </BrowserRouter>
-    </React.StrictMode>
+  </BrowserRouter>
+  
 );

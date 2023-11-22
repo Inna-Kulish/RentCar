@@ -1,9 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { selectAllCars } from "../../redux/selectors";
-import carBrand from "../../services/carBrand.json";
+import { selectCars } from "../../redux/selectors";
 import { changeFilter } from "../../redux/filter/slice";
-import { filterCars } from "../../redux/cars/operations";
 import { getPriceNumber } from "../../services/getPriceNumber";
 import { Form, Label, Input, InputRight, Button, StyledSelect, InputWrap, InputSpan, InputBox } from "./SearchForm.styled";
 import { useState } from "react";
@@ -12,8 +10,9 @@ export default function SearchForm() {
   const [inputFrom, setInputFrom] = useState('');
   const [inputTo, setInputTo] = useState('');
   const dispatch = useDispatch();
-  const cars = useSelector(selectAllCars);
+  const cars = useSelector(selectCars);
 
+  const carBrands = Array.from(new Set(cars.map(car => car.make)));
   const carPrice = getPriceNumber(cars);
 
   const handleChange = (e) => {
@@ -43,7 +42,7 @@ export default function SearchForm() {
     
     
     if (!valueBrand && !valuePrice && !valueMileFrom && !valueMileTo) {
-      Notify.failure('Select at least one filter option.');
+     
       return;
     }
     
@@ -55,7 +54,6 @@ export default function SearchForm() {
         mileto: valueMileTo,
       })
     );
-    dispatch(filterCars());
   };
 
   return (
@@ -68,7 +66,7 @@ export default function SearchForm() {
           classNamePrefix="react-select"
           noOptionsMessage={() => 'No brands'}
           options={[{label: "Enter the text",
-            value: "",}, ...carBrand.map((item) => ({
+            value: "",}, ...carBrands.map((item) => ({
             label: item,
             value: item,
           }))]}
