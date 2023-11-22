@@ -1,4 +1,4 @@
-import{s,f as o,j as t}from"./index-b36ad694.js";import{c as a,C as r,b as i}from"./CatalogPage.styled-0ba6f327.js";const n=s.h1`
+import{s,f as o,j as t}from"./index-c124e4aa.js";import{c as a,C as r,b as i}from"./CatalogPage.styled-56834f3d.js";const n=s.h1`
 text-align: center;
 margin-bottom: 46px;
 color: #121417;
