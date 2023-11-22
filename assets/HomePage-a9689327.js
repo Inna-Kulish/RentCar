@@ -1,4 +1,4 @@
-import{s as n,j as e}from"./index-6c6d1480.js";const t="/RentCar/assets/map-d32b8acc.jpg",a=n.section`
+import{s as n,j as e}from"./index-b36ad694.js";const t="/RentCar/assets/map-d32b8acc.jpg",a=n.section`
 width: 100vw;
 height: 170px;
 padding-top: 90px;
