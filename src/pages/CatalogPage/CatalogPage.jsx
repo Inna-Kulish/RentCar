@@ -28,6 +28,7 @@ export default function CatalogPage() {
   };
 
   useEffect(() => {
+    if (allCars.length !== 0 && page === 1) return;
     dispatch(getCars(page));
     setShowLoadMore(true);
 
@@ -36,7 +37,7 @@ export default function CatalogPage() {
 //     }
 
 
-  }, [dispatch, page]);
+  }, [allCars.length, dispatch, page]);
 
   return (
     <CatalogBox>
