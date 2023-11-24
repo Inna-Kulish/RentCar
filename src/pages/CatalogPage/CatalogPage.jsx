@@ -10,7 +10,7 @@ import { selectCars, selectFilteredCars } from "../../redux/selectors";
 import { CatalogBox } from "./CatalogPage.styled";
 
 export default function CatalogPage() {
-  const [showLoadMore, setShowLoadMore] = useState(false);
+  const [showLoadMore, setShowLoadMore] = useState(true);
   const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
@@ -18,32 +18,37 @@ export default function CatalogPage() {
   const allCars = useSelector(selectCars);
 
   const handleLoadMore = () => {
-  setPage(prevPage => prevPage + 1);
-};
-  
+    setPage((prevPage) => prevPage + 1);
+  };
+
   const clearPage = () => {
     dispatch(clearCars());
     setPage(1);
-    dispatch(getCars(page));
+    setShowLoadMore(true);
   };
 
   useEffect(() => {
     if (allCars.length !== 0 && page === 1) return;
+
     dispatch(getCars(page));
-    setShowLoadMore(true);
+    
+  }, [dispatch, page]);
 
-//     if(visibleCars.length === 0) {
-// setShowLoadMore(false);
-//     }
-
-
-  }, [allCars.length, dispatch, page]);
+  useEffect(() => {
+if (allCars.length % 12 !== 0) {
+      setShowLoadMore(false);
+    }
+  }, [allCars])
 
   return (
     <CatalogBox>
       <SearchForm clearPage={clearPage} />
-      {visibleCars ? <CarsList cars={visibleCars} /> : <CarsList cars={allCars} />}
-      <LoadMore onClick={handleLoadMore}/>
+      {visibleCars ? (
+        <CarsList cars={visibleCars} />
+      ) : (
+        <CarsList cars={allCars} />
+      )}
+      {showLoadMore && <LoadMore onClick={handleLoadMore} />}
     </CatalogBox>
   );
 }
