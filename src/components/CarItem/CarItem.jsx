@@ -29,14 +29,13 @@ export default function CarItem({ data }) {
     make,
     year,
     address,
-    rentalCompany,
     type,
     id,
     accessories,
     rentalPrice,
   } = data;
 
-  const newAddress = address.split(", ").slice(1);
+  const newAddress = address.split(", ");
   const favoriteCars = useSelector(selectFavorite);
 
   const handleAddToFavorite = () => {
@@ -69,11 +68,11 @@ export default function CarItem({ data }) {
         <Title>
           {make} <Span>{model}</Span>, {year}
         </Title>
-        <Price>{rentalPrice}</Price>
+        <Price>{rentalPrice} UAH</Price>
       </Wrap>
       <Description>
-        {newAddress[0]} | {newAddress[1]} | {rentalCompany} | {type} | {model} |{" "}
-        {id} | {accessories[1]}
+        {newAddress[0]} | {newAddress[1]} | {type} | {model} |{" "}
+        {id} | {accessories[0]} | {accessories[2]}
       </Description>
       <Button type="button" onClick={() => setShowModal(true)}>
         Learn more

@@ -3,11 +3,9 @@ import { Img, Title, ListSpecial, ItemSpecial, CarDecs, TitleList, ItemCondition
 import { Span } from "../CarItem/CarItem.styled";
 
 export default function CarInfo({ data }) {
-    const { img, model, make, year, address, rentalCompany, type, id, accessories, rentalPrice, fuelConsumption, engineSize, description, functionalities, rentalConditions, mileage } = data;
-    const newAddress = address.split(', ').slice(1);
-    const rentCond = rentalConditions.split('\n');
-    const minAge = parseInt(rentCond[0].match(/\d+/));
-    const price = Number(rentalPrice.slice(1));
+    const { img, model, make, year, address, type, id, accessories, rentalPrice, fuelConsumption, engineSize, description, functionalities, rentalConditions, mileage } = data;
+    const newAddress = address.split(', ');
+    const minAge = rentalConditions[0];
     const mile = new Intl.NumberFormat("en-IN").format(mileage);
     
     return (
@@ -17,7 +15,7 @@ export default function CarInfo({ data }) {
             <ListSpecial>
                 <ItemSpecial>{newAddress[0]}</ItemSpecial>
                 <ItemSpecial>{newAddress[1]}</ItemSpecial>
-                <ItemSpecial>id:{id}</ItemSpecial>
+                <ItemSpecial>id: {id}</ItemSpecial>
                 <ItemSpecial>Year: {year}</ItemSpecial>
                 <ItemSpecial>Type: {type}</ItemSpecial>
                 <ItemSpecial>Fuel Consumption: {fuelConsumption}</ItemSpecial>
@@ -32,9 +30,9 @@ export default function CarInfo({ data }) {
             <TitleList>Rental Conditions:</TitleList>
             <ListSpecial>
                 <ItemConditions>Minimum age: <SpanNumber>{minAge}</SpanNumber></ItemConditions>
-                {rentCond.slice(1).map(item => (<ItemConditions key={item}>{item}</ItemConditions>))}
-                <ItemConditions>Mileage: <SpanNumber>{mile}</SpanNumber></ItemConditions>
-                <ItemConditions>Price: <SpanNumber>{price}$</SpanNumber></ItemConditions>
+                <ItemConditions>{rentalConditions[1]}</ItemConditions>
+                <ItemConditions>Mileage: <SpanNumber>{mileage}</SpanNumber></ItemConditions>
+                <ItemConditions>Price: <SpanNumber>{rentalPrice} UAH</SpanNumber></ItemConditions>
             </ListSpecial>
             <TelLink href="tel:+380730000000">Rental car</TelLink>
         </>

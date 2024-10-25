@@ -9,6 +9,8 @@ export const Item = styled.li`
 export const ImgCar = styled.img`
   margin-bottom: 14px;
   border-radius: 14px;
+  object-fit: contain;
+  object-position: center;
 `;
 
 export const HeardBtn = styled.button`
@@ -23,7 +25,7 @@ export const HeardBtn = styled.button`
 
 export const HeardIcon = styled(Heard)`
   display: block;
-  stroke: rgba(255, 255, 255, 0.8);
+  stroke: rgba(52, 112, 255, 1);
   width: 18px;
   height: 18px;
 
@@ -41,12 +43,6 @@ export const ActiveHeardIcon = styled(Heard)`
 
   width: 18px;
   height: 18px;
-
-  &:hover,
-  :focus {
-    stroke: rgba(255, 255, 255, 0.8);
-    fill: transparent;
-  }
 `;
 
 export const Wrap = styled.div`

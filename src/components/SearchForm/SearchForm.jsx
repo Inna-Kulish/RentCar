@@ -75,10 +75,10 @@ export default function SearchForm({clearPage}) {
         Price/ 1 hour
         <StyledSelect
           name="price"
-          placeholder="To $"
+          placeholder="To UAH"
           classNamePrefix="react-select"
           noOptionsMessage={() => 'No price'}
-          options={[{label: "To $",
+          options={[{label: "To UAH",
             value: 0,}, ...carPrice.map((item) => ({
             label: item,
             value: item,
