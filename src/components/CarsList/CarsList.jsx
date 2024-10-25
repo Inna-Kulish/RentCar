@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-import { selectCars, selectFilteredCars } from "../../redux/selectors";
 import CarItem from "../CarItem/CarItem";
 import { List } from "./CarsList.styled";
 

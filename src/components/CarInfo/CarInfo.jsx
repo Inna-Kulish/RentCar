@@ -6,7 +6,6 @@ export default function CarInfo({ data }) {
     const { img, model, make, year, address, type, id, accessories, rentalPrice, fuelConsumption, engineSize, description, functionalities, rentalConditions, mileage } = data;
     const newAddress = address.split(', ');
     const minAge = rentalConditions[0];
-    const mile = new Intl.NumberFormat("en-IN").format(mileage);
     
     return (
         <>

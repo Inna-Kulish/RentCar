@@ -43,13 +43,12 @@ if (allCars.length % 12 !== 0) {
   return (
     <CatalogBox>
       <SearchForm clearPage={clearPage} />
-      <CarsList cars={allCars} />
-      {/* {visibleCars ? (
+      {visibleCars ? (
         <CarsList cars={visibleCars} />
       ) : (
         <CarsList cars={allCars} />
-      )} */}
-      {showLoadMore && <LoadMore />}
+      )}
+      {showLoadMore && <LoadMore onClick={handleLoadMore}/>}
     </CatalogBox>
   );
 }

@@ -17,17 +17,17 @@ export const selectFilteredCars = createSelector(
         return false;
       }
 
-      if (filter.price && !(Number(car.rentalPrice.slice(1)) <= filter.price)) {
+      if (filter.price && !(car.rentalPrice <= filter.price)) {
         return false;
       }
 
-      if (filter.milefrom && !(Number(filter.milefrom) <= car.mileage)) {
+      if (filter.milefrom && !(Number(filter.milefrom) <= Number(car.mileage))) {
         return false;
       }
 
-        if (filter.mileto && !(Number(filter.mileto) >= car.mileage)) {
+        if (filter.mileto && !(Number(filter.mileto) >= Number(car.mileage))) {
         return false;
-      }
+        }
 
       return true;
     });

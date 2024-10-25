@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from "react-redux";
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { selectCars } from "../../redux/selectors";
 import { changeFilter } from "../../redux/filter/slice";
 import { getPriceNumber } from "../../services/getPriceNumber";
