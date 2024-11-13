@@ -71,17 +71,16 @@ export default function CarItem({ data }) {
         <Price>{rentalPrice} UAH</Price>
       </Wrap>
       <Description>
-        {newAddress[0]} | {newAddress[1]} | {type} | {model} |{" "}
-        {id} | {accessories[0]} | {accessories[2]}
+        {newAddress[0]} | {newAddress[1]} | {type} | {model} | {id} |{" "}
+        {accessories[0]} | {accessories[2]}
       </Description>
       <Button type="button" onClick={() => setShowModal(true)}>
         Learn more
       </Button>
       {showModal && (
-        <Modal
-          children={<CarInfo data={data} />}
-          onClose={() => setShowModal(false)}
-        />
+        <Modal onClose={() => setShowModal(false)}>
+          <CarInfo data={data} />
+        </Modal>
       )}
     </Item>
   );
