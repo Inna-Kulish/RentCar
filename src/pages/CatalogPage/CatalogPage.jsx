@@ -10,7 +10,6 @@ import { selectCars, selectFilteredCars } from "../../redux/selectors";
 import { CatalogBox } from "./CatalogPage.styled";
 
 export default function CatalogPage() {
-  const [showLoadMore, setShowLoadMore] = useState(true);
   const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
@@ -24,7 +23,6 @@ export default function CatalogPage() {
   const clearPage = () => {
     dispatch(clearCars());
     setPage(1);
-    setShowLoadMore(true);
   };
 
   useEffect(() => {
@@ -34,12 +32,6 @@ export default function CatalogPage() {
     
   }, [dispatch, page]);
 
-  useEffect(() => {
-if (allCars.length % 12 !== 0) {
-      setShowLoadMore(false);
-    }
-  }, [allCars])
-
   return (
     <CatalogBox>
       <SearchForm clearPage={clearPage} />
@@ -48,7 +40,7 @@ if (allCars.length % 12 !== 0) {
       ) : (
         <CarsList cars={allCars} />
       )}
-      {showLoadMore && <LoadMore onClick={handleLoadMore}/>}
+      <LoadMore onClick={handleLoadMore}/>
     </CatalogBox>
   );
 }
