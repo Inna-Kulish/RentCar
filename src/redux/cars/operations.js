@@ -8,7 +8,11 @@ export const getCars = createAsyncThunk(
   "cars/getCars",
   async (page, thunkAPI) => {
     try {
-      const res = await axios.get("/");
+      const res = await axios.get("/", {
+        params: {
+          page,
+          limit:6,
+      }});
       return res.data;
       
     } catch (error) {
